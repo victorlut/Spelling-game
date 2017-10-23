@@ -1,0 +1,160 @@
+/* This is the CSS document for Spelling Game */
+
+* {
+	text-align: center;
+}
+
+.page {
+	width: 960px;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.contents {
+	width: 650px;
+	margin-top: 80px auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#progressBar {
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+}
+
+fieldset {
+	display: none;
+	width: 60%;
+	padding: 20px;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+	box-shadow: 3px 3px 25px 1px gray;
+}
+
+#first {
+	display: block;
+	width: 60%;
+	padding: 20px;
+	margin-top: 30px;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 3px 3px 25px 1px gray;
+}
+
+input[type=text], 
+select {
+	width: 90%;
+	margin: 10px 0;
+	height: 40px;
+	padding: 5px;
+	border: 3px solid rgb(236,176,220);
+	border-radius: 4px;
+}
+
+.btnNext, .btnPrevious{
+	width: 120px;
+	margin: 15px 25px;
+	padding: 5px;
+	height: 40px;
+	background-color: sienna;
+	border: none;
+	border-radius: 4px;
+	color: white;
+	font-family: serif;
+}
+
+.btnSubmit {
+	width: 120px;
+	margin: 15px 25px;
+	padding: 5px;
+	height: 40px;
+	background-color: seagreen;
+	border: none;
+	border-radius: 4px;
+	color: white;
+	font-family: serif;
+}
+
+p {
+	text-align: center;
+	font-family: serif;
+}
+
+li {
+	display: inline-block;
+	color: #C1C5CC;
+	font-family: serif;
+}
+
+.keyboard {
+	width: 60px;
+	height: 50px;
+	background-color: gray;
+	color: white;
+	/*border: none;*/
+}
+
+.ageSelect {
+	width: 120px;
+	margin: 15px 10px;
+	padding: 5px;
+	height: 40px;
+	border: none;
+	border-radius: 4px;
+	color: white;
+	font-family: serif;
+}
+
+input[type=button]:hover {
+	border: 5px solid deepskyblue;
+}
+
+input[type=submit]:hover {
+	border: 5px solid deepskyblue;
+}
+
+#age69 {
+	background-color: seagreen;
+}
+
+#age1013 {
+	background-color: khaki;
+	color: black;
+}
+
+#age1417 {
+	background-color: tomato;
+}
+
+#btnReset {
+	width: 120px;
+	margin: 15px 10px;
+	padding: 5px;
+	height: 40px;
+	margin: auto;
+	border: none;
+	border-radius: 4px;
+	background-color: dodgerblue;
+	color: white;
+	font-family: serif;
+	display: none;
+}
+
+#btnReset:hover {
+	border: 5px solid deepskyblue;
+}
+
+#logo {
+	display: inline-block;
+	height: 80px;
+	vertical-align: middle;
+}
+
+#header {
+	display: inline-block;
+	vertical-align: middle;
+}

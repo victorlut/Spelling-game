@@ -1,0 +1,131 @@
+<!--This is the main HTML file for Spelling Game-->
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<title>Spelling Game</title>
+		
+		<!--Link to CSS styling-->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<!--Link to Javascript code-->
+		<script type="text/javascript" src="gameFunctions.js"></script>
+		
+	</head>
+	<body>
+		<div class="page">
+			<div class="contents">
+				<form class="game" onsubmit="validate(event);submitAnswers();" action="result.html">
+					
+					<!-- Logo from: https://pixabay.com/en/spellcheck-correct-typo-errors-1292780/ -->
+					<img id="logo" src="images\spell_check.png">
+					
+					<h1 id="header">Spelling Game</h1>
+					
+					<br>
+					
+					<p id="difficulty"><strong>Select a difficulty:</strong></p>
+					
+					<input type="button" class="ageSelect" id="age69" value="Ages 6-9" onclick="ageSelected('6-9')">
+					<input type="button" class="ageSelect" id="age1013" value="Ages 10-13" onclick="ageSelected('10-13')">
+					<input type="button" class="ageSelect" id="age1417" value="Ages 14-17" onclick="ageSelected('14-17')">
+					
+					<input type="button" id="btnReset" value="Restart Game" onclick="refreshPage()">
+					
+					<br><br><br>
+					
+					<!-- progress bar across top of game -->
+					<ul id="progressBar" align="center">
+						<li id="q1">&#9899;</li>
+						<li id="q2">&#9898;</li>
+						<li id="q3">&#9898;</li>
+						<li id="q4">&#9898;</li>
+						<li id="q5">&#9898;</li>
+					</ul>
+					
+					
+					<!-- game questions -->
+					<fieldset id="first">
+						<p id="questionNo">Question 1</p>
+						<h4>Play the sound and type your answer in the box</h4>
+						<audio id="audioContainerOne" controls><source id="firstAudio" src="" type="audio/mpeg"></audio><br>
+						<input type="text" class="textBox" id="firstGuess" name="data" placeholder="What is your guess?" value=""><br>
+						<input type="button" class="btnNext" id="nextOne" value="Next" onclick="nextQuestionOne()">
+					</fieldset>
+					
+					<fieldset id="second">
+						<p id="questionNo">Question 2</p>
+						<h4>Play the sound and type your answer in the box</h4>
+						<audio id="audioContainerTwo" controls><source id="secondAudio" src="" type="audio/mpeg"></audio><br>
+						<input type="text" class="textBox" id="secondGuess" name="data" placeholder="What is your guess?" value=""><br>
+						<input type="button" class="btnPrevious" name="previousOne" value="Previous" onclick="previousQuestionOne()">
+						<input type="button" class="btnNext" id="nextOne" value="Next" onclick="nextQuestionTwo()">
+					</fieldset>
+					
+					<fieldset id="third">
+						<p id="questionNo">Question 3</p>
+						<h4>Play the sound and type your answer in the box</h4>
+						<audio id="audioContainerThree" controls><source id="thirdAudio" src="" type="audio/mpeg"></audio><br>
+						<input type="text" class="textBox" id="thirdGuess" name="data" placeholder="What is your guess?" value=""><br>
+						<input type="button" class="btnPrevious" name="previousOne" value="Previous" onclick="previousQuestionTwo()">
+						<input type="button" class="btnNext" id="nextOne" value="Next" onclick="nextQuestionThree()">
+					</fieldset>
+					
+					<fieldset id="fourth">
+						<p id="questionNo">Question 4</p>
+						<h4>Play the sound and type your answer in the box</h4>
+						<audio id="audioContainerFour" controls><source id="fourthAudio" src="" type="audio/mpeg"></audio><br>
+						<input type="text" class="textBox" id="fourthGuess" name="data" placeholder="What is your guess?" value=""><br>
+						<input type="button" class="btnPrevious" name="previousOne" value="Previous" onclick="previousQuestionThree()">
+						<input type="button" class="btnNext" id="nextOne" value="Next" onclick="nextQuestionFour()">
+					</fieldset>
+					
+					<fieldset id="fifth">
+						<p id="questionNo">Question 5</p>
+						<h4>Play the sound and type your answer in the box</h4>
+						<audio id="audioContainerFive" controls><source id="fifthAudio" src="" type="audio/mpeg"></audio><br>
+						<input type="text" class="textBox" id="fifthGuess" name="data" placeholder="What is your guess?" value=""><br>
+						<input type="button" class="btnPrevious" name="previousOne" value="Previous" onclick="previousQuestionFour()">
+						<input type="submit" class="btnSubmit" value="Submit">
+					</fieldset>
+					
+				</form>
+				
+				<br><br>
+				
+				<!-- On-screen keyboard -->
+				<div id="onScreenKeyboard">
+				<!--Q--><input class="keyboard" id="btnQ" type="button" value="Q" onclick="typeLetter('q')"></input>
+				<!--W--><input class="keyboard" id="btnW" type="button" value="W" onclick="typeLetter('w')"></input>
+				<!--E--><input class="keyboard" id="btnE" type="button" value="E" onclick="typeLetter('e')"></input>
+				<!--R--><input class="keyboard" id="btnR" type="button" value="R" onclick="typeLetter('r')"></input>
+				<!--T--><input class="keyboard" id="btnT" type="button" value="T" onclick="typeLetter('t')"></input>
+				<!--Y--><input class="keyboard" id="btnY" type="button" value="Y" onclick="typeLetter('y')"></input>
+				<!--U--><input class="keyboard" id="btnU" type="button" value="U" onclick="typeLetter('u')"></input>
+				<!--I--><input class="keyboard" id="btnI" type="button" value="I" onclick="typeLetter('i')"></input>
+				<!--O--><input class="keyboard" id="btnO" type="button" value="O" onclick="typeLetter('o')"></input>
+				<!--P--><input class="keyboard" id="btnP" type="button" value="P" onclick="typeLetter('p')"></input>
+				<br><br>
+				<!--A--><input class="keyboard" id="btnA" type="button" value="A" onclick="typeLetter('a')"></input>
+				<!--S--><input class="keyboard" id="btnS" type="button" value="S" onclick="typeLetter('s')"></input>
+				<!--D--><input class="keyboard" id="btnD" type="button" value="D" onclick="typeLetter('d')"></input>
+				<!--F--><input class="keyboard" id="btnF" type="button" value="F" onclick="typeLetter('f')"></input>
+				<!--G--><input class="keyboard" id="btnG" type="button" value="G" onclick="typeLetter('g')"></input>
+				<!--H--><input class="keyboard" id="btnH" type="button" value="H" onclick="typeLetter('h')"></input>
+				<!--J--><input class="keyboard" id="btnJ" type="button" value="J" onclick="typeLetter('j')"></input>
+				<!--K--><input class="keyboard" id="btnK" type="button" value="K" onclick="typeLetter('k')"></input>
+				<!--L--><input class="keyboard" id="btnL" type="button" value="L" onclick="typeLetter('l')"></input>
+				<br><br>
+				<!--Z--><input class="keyboard" id="btnZ" type="button" value="Z" onclick="typeLetter('z')"></input>
+				<!--X--><input class="keyboard" id="btnX" type="button" value="X" onclick="typeLetter('x')"></input>
+				<!--C--><input class="keyboard" id="btnC" type="button" value="C" onclick="typeLetter('c')"></input>
+				<!--V--><input class="keyboard" id="btnV" type="button" value="V" onclick="typeLetter('v')"></input>
+				<!--B--><input class="keyboard" id="btnB" type="button" value="B" onclick="typeLetter('b')"></input>
+				<!--N--><input class="keyboard" id="btnN" type="button" value="N" onclick="typeLetter('n')"></input>
+				<!--M--><input class="keyboard" id="btnM" type="button" value="M" onclick="typeLetter('m')"></input>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>
