@@ -1,17 +1,19 @@
 /* This is the CSS document for Spelling Game */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
 
 * {
 	text-align: center;
 }
 
 .page {
-	width: 960px;
 	margin: auto;
 	margin-top: 50px;
+    font-family: 'Poppins';
 }
 
 .contents {
-	width: 650px;
+	max-width: 760px;
+    width: 100%;
 	margin-top: 80px auto;
 	margin-left: auto;
 	margin-right: auto;
@@ -34,7 +36,7 @@ fieldset {
 	box-shadow: 3px 3px 25px 1px gray;
 }
 
-#first {
+#questionBoard {
 	display: block;
 	width: 60%;
 	padding: 20px;
@@ -57,14 +59,27 @@ select {
 
 .btnNext, .btnPrevious{
 	width: 120px;
-	margin: 15px 25px;
+	margin: 5px 25px;
 	padding: 5px;
 	height: 40px;
-	background-color: sienna;
+	background-color: #5b70f9;
 	border: none;
 	border-radius: 4px;
 	color: white;
-	font-family: serif;
+}
+.btnNext:disabled, .btnReplay:disabled {
+    background-color: #555;
+}
+
+.btnReplay{
+	width: 60px;
+	margin: 5px;
+	padding: 5px;
+	height: 35px;
+	background-color: rgb(0 184 125);
+	border: 5px solid transparent;
+	border-radius: 4px;
+	color: white;
 }
 
 .btnSubmit {
@@ -72,33 +87,41 @@ select {
 	margin: 15px 25px;
 	padding: 5px;
 	height: 40px;
-	background-color: seagreen;
+	background-color: rgb(0 184 125);
 	border: none;
 	border-radius: 4px;
 	color: white;
-	font-family: serif;
 }
 
 p {
 	text-align: center;
-	font-family: serif;
 }
 
 li {
 	display: inline-block;
 	color: #C1C5CC;
-	font-family: serif;
 }
 
 .keyboard {
-	width: 60px;
-	height: 50px;
-	background-color: gray;
-	color: white;
-	/*border: none;*/
+    width: 60px;
+    height: 50px;
+    background-color: #5b70f9;
+    font-weight: bold;
+    font-size: 13px;
+    color: white;
+    border: 5px solid #5b70f9;
+    border-radius: 5px;
+}
+.keyboard#btnBS {
+    width: 100px;
 }
 
-.ageSelect {
+@media only screen and (max-width: 768px) {
+    .keyboard {
+        display: none;
+    }
+}
+.activitySelect {
 	width: 120px;
 	margin: 15px 10px;
 	padding: 5px;
@@ -106,28 +129,27 @@ li {
 	border: none;
 	border-radius: 4px;
 	color: white;
-	font-family: serif;
 }
 
-input[type=button]:hover {
+input[type=button]:not([disabled]):hover {
 	border: 5px solid deepskyblue;
 }
 
-input[type=submit]:hover {
+input[type=submit]:not([disabled]):hover {
 	border: 5px solid deepskyblue;
 }
 
-#age69 {
-	background-color: seagreen;
+#activity_14 {
+	background-color: rgb(0 184 125);
 }
 
-#age1013 {
+#activity_15 {
 	background-color: khaki;
 	color: black;
 }
 
-#age1417 {
-	background-color: tomato;
+#activity_16 {
+	background-color: rgba(226, 28, 63);
 }
 
 #btnReset {
@@ -138,13 +160,12 @@ input[type=submit]:hover {
 	margin: auto;
 	border: none;
 	border-radius: 4px;
-	background-color: dodgerblue;
+	background-color: rgba(226, 28, 63);
 	color: white;
-	font-family: serif;
 	display: none;
 }
 
-#btnReset:hover {
+#btnReset:not([disabled]):hover {
 	border: 5px solid deepskyblue;
 }
 
@@ -157,4 +178,22 @@ input[type=submit]:hover {
 #header {
 	display: inline-block;
 	vertical-align: middle;
+}
+
+.status-text {
+    font-size: 20px;
+    margin-top: 15px;
+}
+.status-text.wrong {
+    color: rgba(226, 28, 63);
+}
+.status-text.green {
+    color: rgb(0 184 125);
+}
+.status-text.blue {
+    color: #5b70f9;
+}
+
+.hidden {
+    display: none;
 }
