@@ -10,6 +10,7 @@ var step = 0;
 $(document).ready(() => {
     document.getElementById("audioContainerOne").addEventListener('ended', () => {
         $('.btnReplay').attr('disabled', false);
+        $('.btnReplay').removeClass('playing');
     })
 })
 
@@ -35,12 +36,14 @@ function endState() {
 function setupQuestion() {
     const wordString = wordList[step];
     const soundURL = `data/Activity${activityNumber}/Activity ${activityNumber} - ${wordString}.mp3`;
-    $('#questionNo').html(`Word ${step + 1}`);
+    $('#questionNo').html(`Word ${step + 1}`).removeClass('green');
     $('#guessEdit').val('');
     document.getElementById("audioRef").setAttribute("src", soundURL);
     document.getElementById("audioContainerOne").load();
-    document.getElementById("audioContainerOne").play();
+    replayAudio();
     $('.btnReplay').attr('disabled', true);
+    $('#btnReset').show();
+    $('#btnStart').hide();
     console.log(wordString)
 }
 
@@ -68,6 +71,7 @@ function activitySelected(activity) {
 function replayAudio() {
     document.getElementById("audioContainerOne").play();
     $('.btnReplay').attr('disabled', true);
+    $('.btnReplay').addClass('playing');
 }
 
 //counts number of fields left blank
@@ -88,20 +92,45 @@ function nextQuestion(e = null) {
         e.preventDefault();
     }
     $('.status-text').hide();
+
+    $('#questionBoard').removeClass('wrong');
+    $('#questionBoard').removeClass('perfect');
     
     if ($('#guessEdit').val() !== wordList[step]) {
         $('.status-text.wrong').show();
+        $('#questionBoard').addClass('wrong');
         return;
     }
 
+    $('#questionBoard').addClass('perfect');
     $('.status-text.green').show();
 
     step ++;
     if (step >= wordList.length) {
         endState();
     } else {
-        setupQuestion();
+        $('#guessEdit').val('');
+        $('.board-wrapper').animate({
+            'margin-left': '-100px',
+            'opacity': '0',
+        }, 600, () => {
+            $('.board-wrapper').css({
+                'margin-left': 0,
+                'margin-right': '-100px'
+            })
+            $('.board-wrapper').animate({
+                'margin-right': '0',
+                'opacity': '1'
+            }, 600, () => {
+                setupQuestion();                
+            })
+        });
     }
+    
+}
+
+function viewSolution() {
+    $('#questionNo').html(`${wordList[step]}`).addClass('green');
 }
 
 //function to refresh the page when the 'Restart Game' button is clicked

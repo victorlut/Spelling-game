@@ -21,12 +21,7 @@
 					
 					<br>
 					
-					<p id="difficulty"><strong>Select an activity:</strong></p>
-					
-					<input type="button" class="activitySelect" id="activity_14" value="Activity 14" onclick="activitySelected(14)">
-					<input type="button" class="activitySelect" id="activity_15" value="Activity 15" onclick="activitySelected(15)">
-					<input type="button" class="activitySelect" id="activity_16" value="Activity 16" onclick="activitySelected(16)">
-					
+                    <input type="button" id="btnStart" value="Start Game" onclick="activitySelected(16)">
 					<input type="button" id="btnReset" value="Restart Game" onclick="refreshPage()">
 					
 					<br><br><br>
@@ -35,67 +30,52 @@
 					<ul id="progressBar" align="center">
 						WORDS
 					</ul>
-                    <div class="status-text wrong hidden">
-                        Wrong! Try Again.
+                    <div class="status-wrapper">
+                        <div class="status-text wrong hidden">
+                            <svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns1="http://sozi.baierouge.fr" xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd" id="svg1" inkscape:version="0.41" viewBox="0 0 60 60" sodipodi:version="0.32" _SVGFile__filename="oldscale/actions/cancel.svg" version="1.0" y="0" x="0" sodipodi:docname="button_cancel.svg" sodipodi:docbase="/home/danny/work/icons/primary/scalable/actions">
+                                <path id="path1602" style="stroke-linejoin:round;fill-rule:evenodd;stroke-linecap:round;stroke-width:3.125;" d="m6.529 4.693c-0.6315-0.025-1.1049 0.1467-1.4226 0.4716-2.2432 2.2945 4.8067 12.959 15.894 24.855-11.087 11.895-18.137 22.561-15.894 24.855 2.2508 2.302 12.922-4.77 24.871-15.894 11.948 11.124 22.668 18.196 24.919 15.894 2.243-2.294-4.856-12.96-15.943-24.855 11.087-11.896 18.186-22.561 15.943-24.855-2.251-2.3023-12.971 4.7696-24.919 15.894-10.263-9.554-19.606-16.214-23.448-16.366z"/>
+                              </svg>
+                              Wrong
+                        </div>
+                        <div class="status-text green hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                <path d="M30,76q6-14,13-26q6-12,14-23q8-12,13-17q3-4,6-6q1-1,5-2q8-1,12-1q1,0,1,1q0,1-1,2q-13,11-27,33q-14,21-24,44q-4,9-5,11q-1,2-9,2q-5,0-6-1q-1-1-5-6q-5-8-12-15q-3-4-3-6q0-2,4-5q3-2,6-2q3,0,8,3q5,4,10,14z"/>
+                            </svg>Perfect!
+                        </div>
+                        <script>
+                            document.write(location.hash == '#finished' ? `
+                        <div class="status-text blue">
+                            You won the game!
+                        </div>` : '')
+                        </script>
                     </div>
-                    <div class="status-text green hidden">
-                        Perfect!
-                    </div>
-                    <script>
-                        document.write(location.hash == '#finished' ? `
-                    <div class="status-text blue">
-                        You won the game!
-                    </div>` : '')
-                    </script>
 					
 					
 					<!-- game questions -->
 					<fieldset id="questionBoard">
-						<p id="questionNo">Word 1</p>
-						<h4>Play the sound and type your answer in the box</h4>
-						<audio id="audioContainerOne" controls hidden><source id="audioRef" src="" type="audio/mpeg"></audio>
-                        <input type="button" class="btnReplay" disabled value="Replay" onclick="replayAudio()"><br>
-						<input type="text" class="textBox" id="guessEdit" disabled name="data" placeholder="What is your guess?" value=""><br>
-						<input type="button" class="btnNext" id="nextOne" disabled value="Next" onclick="nextQuestion()">
+                        <div class="board-wrapper">
+                            <p id="questionNo"><b>Word 1</b></p>
+                            <audio id="audioContainerOne" controls hidden><source id="audioRef" src="" type="audio/mpeg"></audio>
+                            <button type="button" class="btnReplay btn-crystal" disabled value="Replay" onclick="replayAudio()">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <circle 
+                                        cx="50" cy="50" r="30"
+                                        fill="transparent"
+                                        stroke-width="8px"
+                                        stroke-dasharray="160"
+                                    />
+                                </svg>
+                                &nbsp;Replay
+                            </button><br>
+                            <input type="text" class="textBox" id="guessEdit" disabled placeholder="Type the word" value=""><br>
+                            <input type="button" class="btnNext" id="nextOne" disabled value="Next" onclick="nextQuestion()">
+                            <button type="button" class="btn-crystal btnSolution" disabled onclick="viewSolution()">
+                                Solution
+                            </button>
+                        </div>
 					</fieldset>
 					
 				</form>
-				
-				<br><br>
-				
-				<!-- On-screen keyboard -->
-				<div id="onScreenKeyboard">
-				<!--Q--><input class="keyboard" disabled id="btnQ" type="button" value="Q" onclick="typeLetter('q')"></input>
-				<!--W--><input class="keyboard" disabled id="btnW" type="button" value="W" onclick="typeLetter('w')"></input>
-				<!--E--><input class="keyboard" disabled id="btnE" type="button" value="E" onclick="typeLetter('e')"></input>
-				<!--R--><input class="keyboard" disabled id="btnR" type="button" value="R" onclick="typeLetter('r')"></input>
-				<!--T--><input class="keyboard" disabled id="btnT" type="button" value="T" onclick="typeLetter('t')"></input>
-				<!--Y--><input class="keyboard" disabled id="btnY" type="button" value="Y" onclick="typeLetter('y')"></input>
-				<!--U--><input class="keyboard" disabled id="btnU" type="button" value="U" onclick="typeLetter('u')"></input>
-				<!--I--><input class="keyboard" disabled id="btnI" type="button" value="I" onclick="typeLetter('i')"></input>
-				<!--O--><input class="keyboard" disabled id="btnO" type="button" value="O" onclick="typeLetter('o')"></input>
-				<!--P--><input class="keyboard" disabled id="btnP" type="button" value="P" onclick="typeLetter('p')"></input>
-				<!--P--><input class="keyboard" disabled id="btnBS" type="button" value="← Backspace" onclick="typeLetter('backspace')"></input>
-				<br><br>
-				<!--A--><input class="keyboard" disabled id="btnA" type="button" value="A" onclick="typeLetter('a')"></input>
-				<!--S--><input class="keyboard" disabled id="btnS" type="button" value="S" onclick="typeLetter('s')"></input>
-				<!--D--><input class="keyboard" disabled id="btnD" type="button" value="D" onclick="typeLetter('d')"></input>
-				<!--F--><input class="keyboard" disabled id="btnF" type="button" value="F" onclick="typeLetter('f')"></input>
-				<!--G--><input class="keyboard" disabled id="btnG" type="button" value="G" onclick="typeLetter('g')"></input>
-				<!--H--><input class="keyboard" disabled id="btnH" type="button" value="H" onclick="typeLetter('h')"></input>
-				<!--J--><input class="keyboard" disabled id="btnJ" type="button" value="J" onclick="typeLetter('j')"></input>
-				<!--K--><input class="keyboard" disabled id="btnK" type="button" value="K" onclick="typeLetter('k')"></input>
-				<!--L--><input class="keyboard" disabled id="btnL" type="button" value="L" onclick="typeLetter('l')"></input>
-				<br><br>
-				<!--Z--><input class="keyboard" disabled id="btnZ" type="button" value="Z" onclick="typeLetter('z')"></input>
-				<!--X--><input class="keyboard" disabled id="btnX" type="button" value="X" onclick="typeLetter('x')"></input>
-				<!--C--><input class="keyboard" disabled id="btnC" type="button" value="C" onclick="typeLetter('c')"></input>
-				<!--V--><input class="keyboard" disabled id="btnV" type="button" value="V" onclick="typeLetter('v')"></input>
-				<!--B--><input class="keyboard" disabled id="btnB" type="button" value="B" onclick="typeLetter('b')"></input>
-				<!--N--><input class="keyboard" disabled id="btnN" type="button" value="N" onclick="typeLetter('n')"></input>
-				<!--M--><input class="keyboard" disabled id="btnM" type="button" value="M" onclick="typeLetter('m')"></input>
-				</div>
-				
 			</div>
 		</div>
         
